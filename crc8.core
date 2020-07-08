@@ -1,0 +1,22 @@
+CAPI=2:
+
+name: adwranovsky::crc8:0.1
+
+filesets:
+    rtl:
+        file_type: verilogSource
+        files:
+            - rtl/crc8.v
+            - rtl/crc_table.v
+
+targets:
+    default:
+        filesets: [rtl]
+    lint:
+        filesets: [rtl]
+        toplevel: "crc8"
+        tools:
+            verilator:
+                mode: "lint-only"
+                verilator_options: ["-Wall"]
+        default_tool: "verilator"
