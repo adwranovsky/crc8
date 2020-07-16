@@ -36,7 +36,7 @@ crc_table #(
 ) crc_table (
     .clk_i(clk_i),
     .addr_i(crc_xor_data),
-    .value(table_out)
+    .value_o(table_out)
 );
 
 assign crc_xor_data = crc_o ^ data_i;

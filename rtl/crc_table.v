@@ -8,7 +8,7 @@ module crc_table #(
 ) (
     input wire clk_i,
     input wire [7:0] addr_i,
-    output wire [7:0] value
+    output wire [7:0] value_o
 );
     // Instantiate a ROM
     reg [7:0] rom [0:255];
@@ -20,7 +20,7 @@ module crc_table #(
             rom_data_out <= rom[addr_i];
         end
     end
-    assign value = rom_data_out;
+    assign value_o = rom_data_out;
 
     // Fill the ROM with the CRC table for this polynomial
     integer i, bit_num;

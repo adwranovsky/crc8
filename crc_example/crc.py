@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-An example CRC calculator, used for verifying the RTL representation, and also
-to aid in my own understanding of how CRC works.
+An example CRC calculator, used for verifying the RTL representation, and also to aid in my own understanding of how CRC
+works. I intended for this to use any CRC width, but right now the table generation only works with crc-8.
 """
 import math
 import sys
