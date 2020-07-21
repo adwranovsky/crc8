@@ -1,0 +1,34 @@
+[tasks]
+cover
+bmc
+prove
+
+[options]
+cover: 
+mode cover
+depth 150
+append 20
+
+bmc:
+mode bmc
+depth 10
+
+prove:
+mode prove
+depth 20
+--
+
+[engines]
+smtbmc
+
+[script]
+read -formal fwb_slave.v
+read -formal wbbram.v
+read -formal formal_top.v
+prep -top formal_top
+
+[files]
+./crc8_formal_top.v
+./crc8_properties.v
+../rtl/crc8.v
+../rtl/crc_table.v

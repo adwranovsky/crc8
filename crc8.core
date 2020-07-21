@@ -7,6 +7,11 @@ filesets:
         file_type: verilogSource
         files:
             - rtl/crc_table.v
+            - rtl/crc8.v
+    rom:
+        file_type: verilogSource
+        files:
+            - rtl/crc_table.v
     verilator_tb:
         file_type: cppSource
         files:
@@ -25,7 +30,7 @@ targets:
                 verilator_options: [-Wall]
     rom_dump_tb:
         default_tool: "verilator"
-        filesets: [rtl, verilator_tb]
+        filesets: [rom, verilator_tb]
         parameters:
             - POLYNOMIAL
         toplevel: crc_table
