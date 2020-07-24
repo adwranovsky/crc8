@@ -22,10 +22,11 @@ depth 20
 smtbmc
 
 [script]
-read -formal fwb_slave.v
-read -formal wbbram.v
-read -formal formal_top.v
-prep -top formal_top
+read -formal crc_table.v
+read -formal crc8.v
+read -formal crc8_properties.v
+read -formal crc8_formal_top.v
+prep -top crc8_formal_top
 
 [files]
 ./crc8_formal_top.v

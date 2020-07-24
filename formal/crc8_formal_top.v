@@ -22,7 +22,7 @@ crc8 #(
 
 crc8_properties #(
     .POLYNOMIAL(POLYNOMIAL)
-) dut (
+) formal_properties (
     .clk_i(clk),
     .rst_i(rst),
     .data_o(data),
