@@ -21,7 +21,8 @@ module crc8 #(
     output wire [7:0] crc_o
 );
 
-reg [7:0] crc_save, crc_xor_data, table_out;
+wire [7:0] crc_xor_data;
+reg [7:0] crc_save, table_out;
 reg data_valid_last_cycle;
 initial {data_valid_last_cycle, crc_save} = 0;
 
