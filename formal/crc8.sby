@@ -1,27 +1,22 @@
 [tasks]
-cover
-bmc
-prove
+--pycode-begin--
+for polynomial in range(256):
+    output("polynomial_0x%02x" % polynomial)
+--pycode-end--
 
 [options]
-cover: 
-mode cover
-depth 150
-append 20
-
-bmc:
-mode bmc
-depth 10
-
-prove:
 mode prove
-depth 20
---
+depth 2
 
 [engines]
 smtbmc
 
 [script]
+--pycode-begin--
+for polynomial in range(256):
+    task_name = "polynomial_0x%02x" % polynomial
+    output("%s: read -define POLYNOMIAL=%d" % (task_name, polynomial))
+--pycode-end--
 read -formal crc_table.v
 read -formal crc8.v
 read -formal crc8_properties.v

@@ -2,8 +2,6 @@
 
 module crc8_formal_top;
 
-localparam POLYNOMIAL = 8'h07;
-
 wire clk;
 wire rst;
 wire [7:0] data;
@@ -11,7 +9,7 @@ wire data_valid;
 wire [7:0] crc;
 
 crc8 #(
-    .POLYNOMIAL(POLYNOMIAL)
+    .POLYNOMIAL(`POLYNOMIAL)
 ) dut (
     .clk_i(clk),
     .rst_i(rst),
@@ -21,7 +19,7 @@ crc8 #(
 );
 
 crc8_properties #(
-    .POLYNOMIAL(POLYNOMIAL)
+    .POLYNOMIAL(`POLYNOMIAL)
 ) formal_properties (
     .clk_i(clk),
     .rst_i(rst),
