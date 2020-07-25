@@ -10,6 +10,23 @@ module crc_table #(
     input wire [7:0] addr_i,
     output wire [7:0] value_o
 );
+    function [7:0] calculate_table_entry(input [7:0] table_index);
+        integer bit_num, actual_polynomial, table_entry;
+        begin
+            // Add the implied 1 to the beginning of the polynomial
+            actual_polynomial = {23'b0, 1'b1, POLYNOMIAL[7:0]};
+            // Divide table_index by the actual polynomial using polynomial divison
+            table_entry = {24'b0, table_index};
+            for (bit_num = 0; bit_num < 8; bit_num = bit_num + 1) begin
+                table_entry = {23'b0, table_entry[7:0], 1'b0};
+                if (table_entry[8]) begin
+                    table_entry = table_entry ^ actual_polynomial;
+                end
+            end
+            calculate_table_entry = table_entry[7:0];
+        end
+    endfunction
+
     // Instantiate a ROM
     reg [7:0] rom [0:255];
     reg [7:0] rom_data_out;
@@ -23,21 +40,20 @@ module crc_table #(
     assign value_o = rom_data_out;
 
     // Fill the ROM with the CRC table for this polynomial
-    integer i, bit_num;
-    reg [8:0] actual_polynomial, table_entry;
+    integer i;
     initial begin
-        // Add the implied 1 to the beginning of the polynomial
-        actual_polynomial = {1'b1, POLYNOMIAL[7:0]};
         for (i = 0; i < 256; i = i+1) begin
-            // For each possible value in the table entry, divide it by the polynomial and then store it in the table
-            table_entry = i[8:0];
-            for (bit_num = 0; bit_num < 8; bit_num = bit_num+1) begin
-                table_entry = {table_entry[7:0], 1'b0};
-                if (table_entry[8]) begin
-                    table_entry = table_entry ^ actual_polynomial;
-                end
-            end
-            rom[i] = table_entry[7:0];
+            // Fill in the table
+            rom[i] = calculate_table_entry(i[7:0]);
         end
     end
+
+// If doing formal verification, ensure that the table always holds the expected values, i.e. is read-only. This is
+// required for a proof by induciton.
+`ifdef FORMAL
+    integer f;
+    always @(*)
+        for (f = 0; f < 256; f = f + 1)
+            assert(rom[f] == calculate_table_entry(f));
+`endif
 endmodule
