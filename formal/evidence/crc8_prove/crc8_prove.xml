@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites disabled="0" errors="0" failures="0" tests="1" time="6">
+<testsuite disabled="0" errors="0" failures="0" name="crc8" skipped="0" tests="1" time="6">
+<properties>
+<property name="os" value="posix"/>
+</properties>
+<testcase classname="crc8" name="prove" status="PASS" time="6">
+<system-out>SBY 22:28:48 [crc8_prove] Copy './crc8_formal_top.v' to 'crc8_prove/src/crc8_formal_top.v'.
+SBY 22:28:48 [crc8_prove] Copy './crc8_properties.v' to 'crc8_prove/src/crc8_properties.v'.
+SBY 22:28:48 [crc8_prove] Copy '../rtl/crc8.v' to 'crc8_prove/src/crc8.v'.
+SBY 22:28:48 [crc8_prove] Copy '../rtl/crc_table.v' to 'crc8_prove/src/crc_table.v'.
+SBY 22:28:48 [crc8_prove] engine_0: smtbmc
+SBY 22:28:48 [crc8_prove] base: starting process &quot;cd crc8_prove/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [7] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [6] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [5] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [4] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [3] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [2] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [1] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_o [0] is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire $paramod\crc8_properties\POLYNOMIAL=8'00000111.\data_valid_o is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire crc8_formal_top.\rst is used but has no driver.
+SBY 22:28:49 [crc8_prove] base: Warning: Wire crc8_formal_top.\clk is used but has no driver.
+SBY 22:28:50 [crc8_prove] base: finished (returncode=0)
+SBY 22:28:50 [crc8_prove] smt2: starting process &quot;cd crc8_prove/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 22:28:50 [crc8_prove] smt2: finished (returncode=0)
+SBY 22:28:50 [crc8_prove] engine_0.basecase: starting process &quot;cd crc8_prove; yosys-smtbmc --presat --unroll --noprogress -t 20 --append 0 --dump-vcd engine_0/trace.vcd --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 22:28:50 [crc8_prove] engine_0.induction: starting process &quot;cd crc8_prove; yosys-smtbmc --presat --unroll -i --noprogress -t 20 --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2&quot;
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Solver: yices
+SBY 22:28:50 [crc8_prove] engine_0.induction: ##   0:00:00  Solver: yices
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY 22:28:50 [crc8_prove] engine_0.induction: ##   0:00:00  Trying induction in step 20..
+SBY 22:28:50 [crc8_prove] engine_0.induction: ##   0:00:00  Trying induction in step 19..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY 22:28:50 [crc8_prove] engine_0.induction: ##   0:00:00  Temporal induction successful.
+SBY 22:28:50 [crc8_prove] engine_0.induction: ##   0:00:00  Status: passed
+SBY 22:28:50 [crc8_prove] engine_0.induction: finished (returncode=0)
+SBY 22:28:50 [crc8_prove] engine_0: Status returned by engine for induction: pass
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 4..
+SBY 22:28:50 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 5..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 6..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 6..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 7..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 7..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 8..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 8..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 9..
+SBY 22:28:51 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 9..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assumptions in step 10..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:01  Checking assertions in step 10..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 11..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 11..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 12..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 12..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 13..
+SBY 22:28:52 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 13..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assumptions in step 14..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:02  Checking assertions in step 14..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assumptions in step 15..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assertions in step 15..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assumptions in step 16..
+SBY 22:28:53 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assertions in step 16..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assumptions in step 17..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:03  Checking assertions in step 17..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:04  Checking assumptions in step 18..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:04  Checking assertions in step 18..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:04  Checking assumptions in step 19..
+SBY 22:28:54 [crc8_prove] engine_0.basecase: ##   0:00:04  Checking assertions in step 19..
+SBY 22:28:55 [crc8_prove] engine_0.basecase: ##   0:00:04  Status: passed
+SBY 22:28:55 [crc8_prove] engine_0.basecase: finished (returncode=0)
+SBY 22:28:55 [crc8_prove] engine_0: Status returned by engine for basecase: pass
+SBY 22:28:55 [crc8_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:06 (6)
+SBY 22:28:55 [crc8_prove] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:06 (6)
+SBY 22:28:55 [crc8_prove] summary: engine_0 (smtbmc) returned pass for induction
+SBY 22:28:55 [crc8_prove] summary: engine_0 (smtbmc) returned pass for basecase
+SBY 22:28:55 [crc8_prove] summary: successful proof by k-induction.
+SBY 22:28:55 [crc8_prove] DONE (PASS, rc=0)
+</system-out></testcase></testsuite></testsuites>

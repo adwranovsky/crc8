@@ -1,0 +1,17 @@
+# running in crc8_prove/src/
+read -formal crc_table.v
+read -formal crc8.v
+read -formal crc8_properties.v
+read -formal crc8_formal_top.v
+prep -top crc8_formal_top
+
+memory_nordff
+async2sync
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+opt -keepdc -fast
+check
+hierarchy -simcheck
+write_ilang ../model/design.il

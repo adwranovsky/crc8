@@ -1,0 +1,19 @@
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc
+
+[script]
+read -formal crc_table.v
+read -formal crc8.v
+read -formal crc8_properties.v
+read -formal crc8_formal_top.v
+prep -top crc8_formal_top
+
+[files]
+./crc8_formal_top.v
+./crc8_properties.v
+../rtl/crc8.v
+../rtl/crc_table.v
