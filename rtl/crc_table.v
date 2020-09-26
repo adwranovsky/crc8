@@ -57,3 +57,5 @@ module crc_table #(
             assert(rom[f] == calculate_table_entry(f));
 `endif
 endmodule
+
+`default_nettype wire

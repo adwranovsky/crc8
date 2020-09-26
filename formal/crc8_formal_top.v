@@ -29,3 +29,5 @@ crc8_properties #(
 );
 
 endmodule
+
+`default_nettype none

@@ -21,8 +21,8 @@ module crc8 #(
     output wire [7:0] crc_o
 );
 
-wire [7:0] crc_xor_data;
-reg [7:0] crc_save, table_out;
+wire [7:0] crc_xor_data, table_out;
+reg [7:0] crc_save;
 reg data_valid_last_cycle;
 initial {data_valid_last_cycle, crc_save} = 0;
 
@@ -53,3 +53,5 @@ always @(posedge clk_i)
 assign crc_o = data_valid_last_cycle? table_out : crc_save;
 
 endmodule
+
+`default_nettype wire

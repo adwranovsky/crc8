@@ -40,3 +40,5 @@ always @(*)
     assert(f_crc8 == crc_i);
 
 endmodule
+
+`default_nettype wire
