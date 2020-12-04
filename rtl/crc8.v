@@ -12,7 +12,7 @@
  *          high.
  */
 module crc8 #(
-    POLYNOMIAL=8'h07
+    parameter POLYNOMIAL=8'h07
 ) (
     input wire clk_i,
     input wire rst_i,
